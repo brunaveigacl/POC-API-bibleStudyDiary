@@ -1,0 +1,36 @@
+@Tutorial(time: 10) {
+    @Intro(title: "Autenticação com a Bíblia Digital API") {
+        Aprenda a criar uma função que envia credenciais para a API da Bíblia Digital
+        e retorna o token de autenticação do usuário.
+
+        @Image(source: "api-diagram.png", alt: "Diagrama mostrando a autenticação com a API da Bíblia Digital.")
+    }
+
+    @Section(title: "Criando a Função de Autenticação") {
+        @ContentAndMedia {
+            Vamos implementar uma função chamada `getUserToken` que envia uma requisição
+            `PUT` com email e senha, e retorna o token da API.
+
+            @Image(source: "request-example.png", alt: "Exemplo de corpo JSON da requisição de autenticação.")
+        }
+
+        @Steps {
+            @Step {
+                Crie um modelo `AuthRequest` que contenha `email` e `password`.
+
+                @Code(name: "AuthRequest", file: "AuthRequest.swift")
+            }
+
+            @Step {
+                Implemente a função `getUserToken` para enviar a requisição e tratar a resposta.
+
+                @Code(name: "Função getUserToken", file: "UserAuthService.swift")
+            }
+
+            @Step {
+                Teste a função no Playground ou em uma `ViewModel`, imprimindo o token no console.
+            }
+        }
+    }
+}
+

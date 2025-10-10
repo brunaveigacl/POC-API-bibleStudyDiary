@@ -11,6 +11,28 @@ class BibleService {
     
     private var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHIiOiJGcmkgU2VwIDE5IDIwMjUgMjA6NDQ6MDQgR01UKzAwMDAuNjhjNDg1ZGYxOWQzMDEwMDI4YjA1ZDE3IiwiaWF0IjoxNzU4MzE0NjQ0fQ.AecWiwHae71AkncdF4VvDxCja_2VDgQwo4occV1NU9U"
     
+    /// Obtém um token de autenticação para um usuário.
+    ///
+    /// Esta função envia uma requisição `PUT` para a API da Bíblia Digital
+    /// com as credenciais fornecidas e retorna o token de autenticação do usuário.
+    ///
+    /// Use esta função para autenticar um usuário e recuperar o `token`
+    /// necessário para chamadas subsequentes na API da Bíblia Digital.
+    ///
+    /// O token é retornado de forma assíncrona através do parâmetro `completion`.
+    ///
+    /// Caso a autenticação falhe (por exemplo, email/senha inválidos ou problemas
+    /// de rede), o `completion` será chamado com `nil` no lugar do token e com
+    /// um objeto `Error` descrevendo a falha.
+    ///
+    /// - Parameters:
+    ///   - email: O endereço de email do usuário.
+    ///   - password: A senha do usuário.
+    ///   - completion: Closure chamada ao final da requisição.
+    ///                 - `String?`: O token de autenticação, se disponível.
+    ///                 - `Error?`: O erro ocorrido durante a requisição, se houver.
+    /// - Note: A função não lança erros diretamente. Os erros são propagados
+    ///         apenas via `completion`.
     func getUserToken(email: String, password: String, completion: @escaping (String?, Error?) -> Void) {
         
         guard let url = URL(string: "https://www.abibliadigital.com.br/api/users/token") else {
